@@ -1,0 +1,125 @@
+/* =======================================================
+   SCP Mockup — area konten halaman "Input Jadwal Mengajar" dan
+   "Input Jurnal & Presensi" dibuat semirip mungkin dengan gambar desain.
+   Dimuat hanya di dua halaman itu; sidebar & topbar tidak berubah.
+   ======================================================= */
+
+.main-wrapper {
+    background:
+        radial-gradient(900px 500px at 8% 0%, rgba(147, 197, 253, 0.6), transparent 60%),
+        radial-gradient(800px 500px at 100% 8%, rgba(186, 230, 253, 0.7), transparent 60%),
+        radial-gradient(900px 600px at 100% 100%, rgba(196, 181, 253, 0.5), transparent 60%),
+        linear-gradient(160deg, #dbeafe 0%, #eff6ff 45%, #e0e7ff 100%) !important;
+}
+.content { max-width: 1320px; }
+
+.mk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.mk-head h2 { font-size: 1.5rem; font-weight: 800; color: #14284b; margin: 0 0 4px; }
+.mk-head p { margin: 0; color: #55627d; font-size: 0.8rem; }
+.mk-pill {
+    background: rgba(219, 234, 254, 0.9); border: 1px solid #93b8f5; color: #1d4ed8;
+    font-weight: 600; font-size: 0.78rem; padding: 7px 16px; border-radius: 999px; white-space: nowrap;
+}
+
+.mk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 991px) { .mk-grid { grid-template-columns: 1fr; } }
+
+.mk-card {
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 22px;
+    padding: 22px 24px;
+    box-shadow: 0 12px 36px -14px rgba(37, 99, 235, 0.28);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #14284b;
+}
+.mk-card h3 { font-size: 1.02rem; font-weight: 800; color: #14284b; margin: 0 0 14px; }
+.mk-card.full { margin-top: 20px; }
+
+/* Field */
+.mk-label { display: block; font-size: 0.72rem; font-weight: 700; color: #3b4a6b; margin-bottom: 5px; letter-spacing: 0.01em; }
+.mk-label.caps { text-transform: uppercase; letter-spacing: 0.04em; }
+.mk-field {
+    display: block; width: 100%;
+    background: rgba(255, 255, 255, 0.92); border: 1.5px solid #c9d8f0; border-radius: 12px;
+    padding: 10px 13px; font-size: 0.86rem; color: #14284b; outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+select.mk-field { appearance: auto; }
+.mk-field:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+.mk-field[readonly], .mk-field:disabled { background: rgba(236, 242, 252, 0.9); color: #5b6a88; }
+textarea.mk-field { min-height: 96px; resize: vertical; }
+.mk-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.mk-row.one { grid-template-columns: 1fr; }
+@media (max-width: 575px) { .mk-row { grid-template-columns: 1fr; } }
+.mk-hint { font-size: 0.72rem; color: #5b6a88; margin: 2px 0 14px; }
+
+/* Tombol */
+.mk-btn { border: 0; border-radius: 12px; padding: 12px 18px; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: transform 0.12s, box-shadow 0.12s; text-align: center; text-decoration: none; display: inline-block; }
+.mk-btn:hover { transform: translateY(-1px); }
+.mk-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.mk-btn-primary { background: #2563eb; color: #fff; box-shadow: 0 10px 22px -10px rgba(37, 99, 235, 0.85); }
+.mk-btn-primary:hover { color: #fff; background: #1d4ed8; }
+.mk-btn-ghost { background: rgba(255, 255, 255, 0.92); color: #14284b; border: 1.5px solid #c9d8f0; }
+.mk-btn-block { display: block; width: 100%; }
+.mk-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Alert & catatan */
+.mk-alert {
+    border-left: 4px solid #dc2626; background: rgba(254, 226, 226, 0.92); color: #7f1d1d;
+    border-radius: 10px; padding: 12px 14px; font-size: 0.8rem; margin-bottom: 16px; line-height: 1.5;
+}
+.mk-alert strong { display: block; }
+.mk-alert.ok { border-left-color: #16a34a; background: rgba(220, 252, 231, 0.92); color: #14532d; }
+.mk-note {
+    background: rgba(254, 243, 199, 0.92); border: 1px solid #f3dc9a; color: #92400e;
+    font-weight: 600; font-size: 0.78rem; border-radius: 12px; padding: 12px 14px; margin-top: 12px;
+}
+
+/* Tabel Jadwal Saya (memakai .scp-tbl dari scp-rounded.css) */
+.mk-card .scp-tbl th { color: #55627d; border-bottom-color: rgba(147, 170, 210, 0.5); }
+.mk-card .scp-tbl td { border-bottom-color: rgba(147, 170, 210, 0.32); color: #1c2c4e; }
+.mk-card .scp-tbl tbody tr:hover td { background: rgba(37, 99, 235, 0.05); }
+.mk-card .scp-pill-edit { background: #dbe7fb; border-color: #9db9ee; color: #1d4ed8; }
+.mk-card .scp-pill-hapus { background: #fde4e4; border-color: #f4b6b6; color: #b42323; }
+.mk-card .scp-tbl-title { color: #14284b; font-size: 1.02rem; font-weight: 800; margin-bottom: 8px; }
+
+/* Upload foto */
+.mk-upload {
+    display: flex; gap: 18px; align-items: center; cursor: pointer; margin: 0;
+    border: 1.5px dashed #7aa3ee; background: rgba(219, 234, 254, 0.55);
+    border-radius: 16px; padding: 16px;
+}
+.mk-upload:hover { background: rgba(219, 234, 254, 0.85); }
+.mk-upload input[type=file] { display: none; }
+.mk-thumb {
+    width: 112px; height: 88px; flex: none; border-radius: 10px; overflow: hidden;
+    background: #93c5fd; color: #fff; font-weight: 800; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+}
+.mk-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.mk-upload-info { flex: 1; text-align: center; font-size: 0.74rem; color: #3b4a6b; }
+.mk-upload-info .nm { font-weight: 700; color: #14284b; font-size: 0.82rem; word-break: break-all; }
+.mk-upload-info .st { font-weight: 700; margin: 3px 0; }
+.mk-upload-info .st.ok { color: #16a34a; }
+.mk-upload-info .st.bad { color: #dc2626; }
+
+/* Presensi */
+.mk-card .presensi-tbl td:first-child { font-weight: 500; }
+.mk-card .presensi-lock.izin { color: #2563eb; }
+.mk-scroll { max-height: 540px; overflow-y: auto; padding-right: 4px; }
+.mk-summary { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.74rem; color: #3b4a6b; margin-top: 12px; }
+.mk-empty { text-align: center; color: #5b6a88; font-size: 0.84rem; padding: 36px 8px; }
+.mk-foot { font-size: 0.72rem; color: #3b4a6b; margin-top: 12px; line-height: 1.5; }
+
+/* Tag kecil */
+.mk-tag { font-size: 0.66rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; display: inline-block; }
+.mk-tag.h { background: #dcfce7; color: #166534; }
+.mk-tag.i { background: #dbeafe; color: #1e40af; }
+.mk-tag.s { background: #fef3c7; color: #92400e; }
+.mk-tag.a { background: #fee2e2; color: #991b1b; }
+
+/* Daftar jadwal aktif / riwayat memakai tabel Bootstrap bawaan di dalam kartu kaca */
+.mk-card .table { --bs-table-bg: transparent; --bs-table-striped-bg: rgba(255, 255, 255, 0.4); }
+.mk-card .table thead th { background: transparent; }

@@ -1,0 +1,299 @@
+/* =======================================================
+   SCP Rounded — lekukan (sudut membulat) + gaya tabel dari UI baru.
+   Warna, layout, dan sidebar tetap seperti tampilan awal.
+   ======================================================= */
+
+:root {
+    --r-xl: 22px;
+    --r-lg: 18px;
+    --r-md: 12px;
+    --r-sm: 12px;
+}
+
+/* Sidebar: sisi kanan melengkung, menu membulat */
+.sidebar {
+    border-radius: 0 24px 24px 0;
+}
+
+.side-link {
+    border-radius: 12px;
+}
+
+/* Topbar */
+.topbar-notif-btn,
+.topbar-user-btn,
+.topbar-burger,
+.topbar-collapse-btn {
+    border-radius: 12px;
+}
+
+.dropdown-menu {
+    border-radius: 16px;
+}
+
+/* Kartu */
+.card,
+.scp-panel,
+.scp-stat,
+.empty-hint-card,
+.page-welcome,
+.dash-rules {
+    border-radius: 22px;
+}
+
+.card-header:first-child,
+.scp-panel-head {
+    border-radius: 21px 21px 0 0;
+}
+
+/* Tombol */
+.btn,
+.scp-btn,
+.scp-alert-btn {
+    border-radius: 12px;
+}
+
+.btn-sm {
+    border-radius: 10px;
+}
+
+/* Form */
+.form-control,
+.form-select,
+.input-group-text {
+    border-radius: 12px;
+}
+
+.input-group>.form-control,
+.input-group>.btn {
+    border-radius: 12px;
+}
+
+.input-group>.input-group-text {
+    border-radius: 12px 0 0 12px;
+}
+
+/* Badge, alert, tabel */
+.badge {
+    border-radius: 999px;
+}
+
+.alert,
+.scp-alert {
+    border-radius: 14px;
+}
+
+.table-responsive {
+    border-radius: 14px;
+}
+
+/* Login */
+.auth-split-form-inner .form-control {
+    border-radius: 12px;
+}
+
+.auth-btn-split {
+    border-radius: 12px;
+}
+
+.auth-split-badge {
+    border-radius: 999px;
+}
+
+@media (max-width: 991px) {
+    .sidebar {
+        border-radius: 0 24px 24px 0;
+    }
+}
+
+
+/* =======================================================
+   Tabel gaya baru (Jadwal Saya & Presensi Siswa)
+   ======================================================= */
+.scp-tbl-title {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--accent-dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.scp-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+}
+
+.scp-tbl th {
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-500);
+    font-weight: 700;
+    text-align: left;
+    padding: 8px 8px;
+    border-bottom: 1.5px solid var(--border);
+}
+
+.scp-tbl td {
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--border-2);
+    vertical-align: middle;
+    color: var(--ink-900);
+}
+
+.scp-tbl tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.scp-tbl tbody tr:hover td {
+    background: var(--accent-soft);
+}
+
+.scp-tbl .c {
+    text-align: center;
+    width: 48px;
+}
+
+.scp-tbl-note {
+    margin-top: 12px;
+    padding: 11px 14px;
+    border-radius: 12px;
+    background: #fdf3d6;
+    border: 1px solid #f0dc9c;
+    color: #8a5a10;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+/* Tombol pil Edit / Hapus */
+.scp-pill-btn {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 4px 14px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.12s, filter 0.12s;
+}
+
+.scp-pill-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.96);
+}
+
+.scp-pill-edit {
+    background: rgba(74, 127, 167, 0.16);
+    border-color: rgba(74, 127, 167, 0.45);
+    color: var(--accent);
+}
+
+.scp-pill-hapus {
+    background: #fde4e4;
+    border-color: #f4b6b6;
+    color: #b42323;
+    margin-left: 4px;
+}
+
+/* Presensi: lingkaran H / I / S / A */
+.presensi-tbl td:first-child {
+    font-weight: 500;
+}
+
+.presensi-lock {
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+.presensi-lock.izin {
+    color: var(--accent-2);
+}
+
+.presensi-lock.sakit {
+    color: #d97706;
+}
+
+.dot {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+.dot input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.dot span {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    transition: background 0.12s, border-color 0.12s;
+}
+
+.dot input:checked+span::after {
+    content: '\2713';
+}
+
+.dot-H input:checked+span {
+    background: #16a34a;
+    border-color: #16a34a;
+}
+
+.dot-I input:checked+span {
+    background: #2f6fed;
+    border-color: #2f6fed;
+}
+
+.dot-S input:checked+span {
+    background: #d97706;
+    border-color: #d97706;
+}
+
+.dot-A input:checked+span {
+    background: #dc2626;
+    border-color: #dc2626;
+}
+
+.dot input:disabled {
+    cursor: not-allowed;
+}
+
+.dot input:focus-visible+span {
+    box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+
+/* =======================================================
+   Latar halaman biru pudar (gradasi) untuk SEMUA halaman
+   — sama seperti halaman Jurnal & Jadwal.
+   ======================================================= */
+.main-wrapper {
+    background:
+        radial-gradient(900px 500px at 8% 0%, rgba(147, 197, 253, 0.6), transparent 60%),
+        radial-gradient(800px 500px at 100% 8%, rgba(186, 230, 253, 0.7), transparent 60%),
+        radial-gradient(900px 600px at 100% 100%, rgba(196, 181, 253, 0.5), transparent 60%),
+        linear-gradient(160deg, #dbeafe 0%, #eff6ff 45%, #e0e7ff 100%) !important;
+    background-attachment: fixed !important;
+}

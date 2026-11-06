@@ -1,0 +1,272 @@
+/* =======================================================
+   UKK SCP - Mobile-First Layer (mengikuti wireframe)
+   Struktur: top bar (menu/kembali - judul - notifikasi - avatar),
+   konten berbentuk kartu, tombol aksi penuh, bottom navigation.
+   Hanya aktif di layar <= 767px. Desktop tidak berubah.
+   ======================================================= */
+
+.bottom-nav,
+.topbar-back,
+.sched-list { display: none; }
+
+@media (max-width: 767.98px) {
+
+    :root { --bn-h: 62px; }
+
+    /* ---------- Top bar ---------- */
+    .topbar {
+        min-height: 54px;
+        padding: env(safe-area-inset-top, 0) .75rem 0;
+        gap: .45rem;
+    }
+    .topbar-title-wrap { flex: 1; min-width: 0; }
+    .topbar-title {
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .topbar-date { display: none; }
+    .topbar-back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: var(--r-sm);
+        color: var(--ink-900);
+        font-size: 1.3rem;
+        text-decoration: none;
+    }
+    .topbar.has-back .topbar-burger { display: none; }
+    .topbar-burger { order: -1; }
+    .topbar.has-back .topbar-back { order: -1; }
+    .topbar-right { gap: .35rem; }
+    .tu-name, .tu-role, .topbar-user-btn i.bi-chevron-down { display: none; }
+
+    /* Dropdown notifikasi selebar layar */
+    .notif-dropdown { position: static; }
+    .notif-menu {
+        position: fixed !important;
+        top: 58px !important;
+        left: .75rem !important;
+        right: .75rem !important;
+        width: auto !important;
+        transform: none !important;
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    /* ---------- Konten + ruang untuk bottom nav ---------- */
+    .content {
+        padding: .9rem .85rem calc(var(--bn-h) + 1.25rem + env(safe-area-inset-bottom, 0));
+    }
+
+    /* ---------- Bottom navigation ---------- */
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        z-index: 90;
+        height: calc(var(--bn-h) + env(safe-area-inset-bottom, 0));
+        padding-bottom: env(safe-area-inset-bottom, 0);
+        background: #fff;
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -6px 18px -10px rgba(20, 20, 43, .25);
+    }
+    .bn-item {
+        flex: 1 1 0;
+        min-width: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        color: var(--ink-500);
+        font-size: .68rem;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .bn-item i { font-size: 1.3rem; line-height: 1; }
+    .bn-item.active { color: var(--accent); font-weight: 800; }
+    .bn-item.active::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 28%; right: 28%;
+        height: 3px;
+        border-radius: 0 0 4px 4px;
+        background: var(--accent);
+    }
+
+    /* ---------- Judul halaman & kartu ringkas ---------- */
+    .scp-head {
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: .6rem;
+        margin-bottom: .85rem;
+    }
+    .scp-head h2 { font-size: 1.05rem; }
+    .scp-head p { font-size: .78rem; }
+    .scp-badge { padding: .3rem .7rem; font-size: .7rem; }
+
+    /* Kartu pengingat jurnal */
+    .scp-alert {
+        flex-wrap: wrap;
+        padding: .85rem .9rem;
+        gap: .6rem .75rem;
+        border-left-width: 5px;
+    }
+    .scp-alert-btn {
+        width: auto;
+        margin-left: auto;
+        padding: .45rem .95rem;
+        font-size: .8rem;
+    }
+
+    /* 3 kartu ringkasan sebaris */
+    .scp-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: .55rem;
+        margin-bottom: .9rem;
+    }
+    .scp-stat {
+        padding: .7rem .4rem;
+        text-align: center;
+        border-radius: var(--r-md);
+    }
+    .scp-stat::before { display: none; }
+    .scp-stat-label { font-size: .58rem; letter-spacing: .03em; }
+    .scp-stat-value { font-size: 1.5rem; }
+    .scp-stat:nth-child(4) {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .6rem .9rem;
+    }
+    .scp-stat:nth-child(4) .scp-stat-value { font-size: 1rem; padding: 0; }
+
+    .scp-panel { padding: 1rem .9rem; border-radius: var(--r-lg); }
+    .scp-panel-head h5 { font-size: .98rem; }
+
+    /* Daftar jadwal hari ini berbentuk kartu */
+    .sched-list { display: block; }
+    .sched-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .75rem;
+        padding: .7rem .85rem;
+        margin-bottom: .55rem;
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        background: #fff;
+    }
+    .sched-card.row-bad { background: #fdecec; border-color: #f6c9c9; }
+    .sched-time { font-size: .74rem; font-weight: 800; color: var(--ink-900); }
+    .sched-title { font-size: .88rem; font-weight: 600; margin: .1rem 0; }
+    .sched-room { font-size: .72rem; color: var(--ink-500); }
+
+    /* ---------- Welcome & kartu fungsi (dashboard) ---------- */
+    .page-welcome { padding: 1rem; gap: .8rem; border-radius: var(--r-lg); }
+    .page-welcome h2 { font-size: 1.05rem; }
+    .page-welcome p { font-size: .8rem; }
+    .empty-hint-grid { grid-template-columns: 1fr !important; gap: .6rem; }
+    .empty-hint-card { padding: .85rem; border-radius: var(--r-md); }
+
+    /* ---------- Form: satu kolom, kontrol besar, tombol penuh ---------- */
+    .bento-grid > .order-md-2 { order: -1; }          /* form tampil di atas riwayat */
+    .card { border-radius: var(--r-lg); }
+    .card-body { padding: 1rem .9rem; }
+    .form-control, .form-select {
+        min-height: 44px;
+        font-size: 16px;                              /* cegah zoom otomatis iOS */
+        border-radius: var(--r-sm);
+    }
+    textarea.form-control { min-height: 96px; }
+    .form-label { font-size: .8rem; font-weight: 700; margin-bottom: .3rem; }
+    .row > [class*="col-md-"] { width: 100%; }
+    .btn { min-height: 44px; border-radius: var(--r-sm); font-weight: 700; }
+    .btn-sm { min-height: 38px; }
+    .card-body form > .btn,
+    .card-body form button[type="submit"].btn:only-of-type { width: 100%; }
+
+    /* Presensi siswa: nama kiri, tombol H/I/S/A kanan */
+    .presensi-row { flex-wrap: nowrap !important; }
+    .presensi-row .btn-group .btn,
+    .presensi-row .btn { min-width: 40px; padding-left: .5rem; padding-right: .5rem; }
+
+    /* ---------- Tabel -> kartu ---------- */
+    .stack-table { border: 0 !important; }
+    .stack-table thead { display: none; }
+    .stack-table, .stack-table tbody, .stack-table tr, .stack-table td { display: block; width: 100%; }
+    .table-responsive { overflow: visible; }
+    .stack-table tr {
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        margin-bottom: .65rem;
+        padding: .4rem .85rem;
+        background: #fff;
+        box-shadow: var(--shadow-xs);
+    }
+    .stack-table tr.row-bad { background: #fdecec; border-color: #f6c9c9; }
+    .stack-table td {
+        border: 0 !important;
+        border-bottom: 1px dashed var(--border-2) !important;
+        padding: .5rem 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-align: left;
+    }
+    .stack-table td:last-child { border-bottom: 0 !important; }
+    .stack-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 2px;
+        font-size: .62rem;
+        font-weight: 800;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: var(--ink-500);
+    }
+    .stack-table td.td-span { text-align: center; }
+    .stack-table td.td-span::before { content: none; }
+    /* sel aksi: tombol sejajar, mengisi lebar (Setujui | Tolak) */
+    .stack-table td[data-label^="Aksi"] {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+    .stack-table td[data-label^="Aksi"]::before { flex: 0 0 100%; }
+    .stack-table td[data-label^="Aksi"] > form,
+    .stack-table td[data-label^="Aksi"] > .btn,
+    .stack-table td[data-label^="Aksi"] > a { flex: 1 1 0; margin: 0 !important; }
+    .stack-table td[data-label^="Aksi"] .btn { width: 100%; }
+
+    /* Modal jadi lebih lega di HP */
+    .modal-dialog { margin: .6rem; }
+}
+
+@media (max-width: 380px) {
+    .scp-stat-label { font-size: .54rem; }
+    .bn-item { font-size: .62rem; }
+}
+
+@media (max-width: 767.98px) { .sched-table { display: none; } }
+
+/* Role dengan banyak menu (Waka): bottom nav bisa digeser ke samping */
+@media (max-width: 767.98px) {
+    .bottom-nav.bn-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+    }
+    .bottom-nav.bn-scroll::-webkit-scrollbar { display: none; }
+    .bottom-nav.bn-scroll .bn-item { flex: 0 0 22%; scroll-snap-align: center; }
+}

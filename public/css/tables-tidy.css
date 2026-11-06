@@ -1,0 +1,129 @@
+/* =======================================================
+   TABLES TIDY — Jurnal Mengajar & Jadwal Pelajaran
+   Dimuat setelah style.css & mobile.css
+   ======================================================= */
+
+/* ---------- Layout dua kolom: daftar lebar + form tetap ---------- */
+.split-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 1.25rem;
+    align-items: start;
+}
+@media (max-width: 991px) {
+    .split-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Tabel dasar ---------- */
+.table-tidy { font-size: .875rem; --tt-pad-y: .7rem; --tt-pad-x: .85rem; }
+.table-tidy thead th {
+    padding: .65rem var(--tt-pad-x);
+    white-space: nowrap;
+}
+.table-tidy tbody td {
+    padding: var(--tt-pad-y) var(--tt-pad-x);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-2);
+}
+.table-tidy tbody tr:last-child td { border-bottom: 0; }
+.table-tidy tbody tr:hover { background: var(--bg); }
+.table-tidy .col-shrink { width: 1%; white-space: nowrap; }
+
+/* ---------- Teks bertingkat ---------- */
+.cell-title { font-weight: 600; color: var(--ink-900); line-height: 1.3; }
+.cell-sub   { color: var(--ink-700); font-size: .82rem; line-height: 1.35; }
+.cell-meta  {
+    display: flex; flex-wrap: wrap; gap: .15rem .6rem;
+    margin-top: .25rem; color: var(--ink-500); font-size: .76rem;
+}
+.cell-meta i { margin-right: .2rem; opacity: .8; }
+.cell-topic {
+    margin-top: .35rem; color: var(--ink-700); font-size: .8rem;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.cell-date  { font-weight: 600; color: var(--ink-900); line-height: 1.25; }
+.cell-date small { display: block; font-weight: 500; color: var(--ink-500); font-size: .74rem; }
+.time-range { font-variant-numeric: tabular-nums; color: var(--ink-900); font-weight: 500; white-space: nowrap; }
+
+/* ---------- Tag kecil ---------- */
+.tag {
+    display: inline-block; padding: .12rem .5rem; border-radius: 999px;
+    font-size: .7rem; font-weight: 600; line-height: 1.4; white-space: nowrap;
+    background: var(--bg-2); color: var(--accent);
+}
+.tag-soft { background: transparent; color: var(--ink-500); padding-left: 0; padding-right: 0; font-weight: 500; }
+.tag-jam  { background: rgba(74,127,167,.12); color: var(--accent-2); }
+.tag-open { background: #e6f6ec; color: #17803d; }
+.tag-lock { background: #fdecec; color: #b42318; }
+
+/* ---------- Chip presensi (H / I / S / A) ---------- */
+.att-row { display: flex; flex-wrap: nowrap; gap: .25rem; }
+.att-chip {
+    min-width: 2.15rem; text-align: center; padding: .15rem .35rem;
+    border-radius: 6px; font-size: .72rem; font-weight: 700;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.att-h { background: #e6f6ec; color: #17803d; }
+.att-i { background: #fff4d6; color: #8a6100; }
+.att-s { background: #e3f1fb; color: #1f6aa5; }
+.att-a { background: #fdecec; color: #b42318; }
+.att-chip.is-zero { opacity: .4; }
+
+/* ---------- Tombol aksi ikon ---------- */
+.act-group { display: flex; gap: .35rem; justify-content: flex-end; }
+.btn-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2rem; height: 2rem; padding: 0; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--accent); font-size: .95rem; text-decoration: none;
+    transition: background .15s, border-color .15s, color .15s;
+}
+.btn-icon:hover { background: var(--accent-soft); border-color: var(--accent-2); color: var(--accent); }
+.btn-icon.is-success { color: #17803d; }
+.btn-icon.is-success:hover { background: #e6f6ec; border-color: #17803d; color: #17803d; }
+.btn-icon.is-disabled { opacity: .35; pointer-events: none; }
+
+/* ---------- Jadwal aktif: blok putaran & hari ---------- */
+.putaran-head {
+    display: flex; align-items: center; gap: .5rem;
+    padding-bottom: .6rem; margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+.putaran-head h6 { margin: 0; font-weight: 700; color: var(--ink-900); }
+.putaran-block + .putaran-block { margin-top: 2rem; }
+
+.hari-block { margin-bottom: 1rem; }
+.hari-title {
+    display: flex; align-items: center; gap: .5rem;
+    font-weight: 700; font-size: .9rem; color: var(--accent);
+    margin-bottom: .4rem;
+}
+.hari-title .count { font-weight: 500; font-size: .75rem; color: var(--ink-500); }
+.hari-block .table-responsive {
+    border: 1px solid var(--border-2); border-radius: var(--r-md, 12px); background: var(--surface);
+}
+.hari-block.is-empty {
+    display: flex; align-items: baseline; gap: .6rem;
+    padding: .35rem 0; margin-bottom: .25rem;
+    color: var(--ink-300); font-size: .82rem;
+}
+.hari-block.is-empty .hari-title { margin: 0; color: var(--ink-500); font-weight: 600; min-width: 4.2rem; }
+
+/* header kolom hari disembunyikan visual, tetap dibaca screen reader */
+.sched-table thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);
+}
+.sched-table tbody td:first-child { width: 1%; }
+
+/* ---------- Header kartu ringkas ---------- */
+.card-header .count-pill {
+    background: var(--bg-2); color: var(--accent);
+    padding: .15rem .6rem; border-radius: 999px; font-size: .75rem; font-weight: 600;
+}
+
+@media (max-width: 575px) {
+    .table-tidy { --tt-pad-x: .6rem; }
+    .att-chip { min-width: 1.9rem; }
+}
+
+.putaran-head .count { font-size: .78rem; font-weight: 500; color: var(--ink-500); }

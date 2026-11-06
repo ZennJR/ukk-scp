@@ -1,0 +1,9 @@
+# Lokasi: Windows  C:\Users\<nama>\.cloudflared\config.yml
+#         Linux    ~/.cloudflared/config.yml
+tunnel: <TUNNEL-ID>
+credentials-file: C:\Users\<nama>\.cloudflared\<TUNNEL-ID>.json
+
+ingress:
+  - hostname: scp.domainanda.com
+    service: http://localhost:8000
+  - service: http_status:404
